@@ -1,0 +1,230 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-stack-sans);
+  --font-display: var(--font-stack-display);
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Official Provenic segment colors (from the approved brand mark) */
+  --color-brand-violet: #7c3aed;
+  --color-brand-magenta: #db2777;
+  --color-brand-rose: #f43f5e;
+  --color-brand-orange: #f97316;
+  --color-brand-amber: #fbbf24;
+  --color-brand-emerald: #10b981;
+  --color-brand-cyan: #06b6d4;
+  --color-brand-ink: #1f2937;
+  --color-brand-night: #111827;
+
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --radius: 0.625rem;
+
+  --background: oklch(0.985 0.002 264);
+  --surface: oklch(0.97 0.004 264);
+  --surface-raised: oklch(1 0 0);
+  --foreground: oklch(0.21 0.028 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.028 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.028 265);
+  --primary: oklch(0.21 0.034 265);
+  --primary-foreground: oklch(0.985 0.002 264);
+  --secondary: oklch(0.955 0.005 264);
+  --secondary-foreground: oklch(0.25 0.03 265);
+  --muted: oklch(0.955 0.005 264);
+  --muted-foreground: oklch(0.47 0.022 264);
+  --accent: oklch(0.95 0.012 293);
+  --accent-foreground: oklch(0.4 0.2 293);
+  --destructive: oklch(0.58 0.22 17);
+  --border: oklch(0.915 0.006 264);
+  --input: oklch(0.89 0.008 264);
+  --ring: oklch(0.54 0.25 293);
+
+  --chart-1: #7c3aed;
+  --chart-2: #06b6d4;
+  --chart-3: #10b981;
+  --chart-4: #f97316;
+  --chart-5: #db2777;
+
+  --sidebar: oklch(0.975 0.003 264);
+  --sidebar-foreground: oklch(0.3 0.025 265);
+  --sidebar-primary: oklch(0.21 0.034 265);
+  --sidebar-primary-foreground: oklch(0.985 0.002 264);
+  --sidebar-accent: oklch(0.935 0.006 264);
+  --sidebar-accent-foreground: oklch(0.21 0.028 265);
+  --sidebar-border: oklch(0.915 0.006 264);
+  --sidebar-ring: oklch(0.54 0.25 293);
+
+  --shadow-elevated: 0 1px 2px oklch(0.21 0.03 265 / 0.04), 0 8px 24px -8px oklch(0.21 0.03 265 / 0.1);
+}
+
+.dark {
+  color-scheme: dark;
+  /* Deep night surfaces derived from the brand night tone (#111827) */
+  --background: oklch(0.165 0.018 265);
+  --surface: oklch(0.19 0.02 265);
+  --surface-raised: oklch(0.215 0.022 265);
+  --foreground: oklch(0.96 0.004 264);
+  --card: oklch(0.2 0.02 265);
+  --card-foreground: oklch(0.96 0.004 264);
+  --popover: oklch(0.22 0.022 265);
+  --popover-foreground: oklch(0.96 0.004 264);
+  --primary: oklch(0.97 0.004 264);
+  --primary-foreground: oklch(0.2 0.03 265);
+  --secondary: oklch(0.255 0.022 265);
+  --secondary-foreground: oklch(0.94 0.004 264);
+  --muted: oklch(0.24 0.02 265);
+  --muted-foreground: oklch(0.72 0.016 264);
+  --accent: oklch(0.29 0.07 293);
+  --accent-foreground: oklch(0.87 0.09 293);
+  --destructive: oklch(0.68 0.2 17);
+  --border: oklch(0.29 0.02 265);
+  --input: oklch(0.32 0.022 265);
+  --ring: oklch(0.68 0.2 293);
+
+  --sidebar: oklch(0.18 0.019 265);
+  --sidebar-foreground: oklch(0.86 0.008 264);
+  --sidebar-primary: oklch(0.97 0.004 264);
+  --sidebar-primary-foreground: oklch(0.2 0.03 265);
+  --sidebar-accent: oklch(0.245 0.022 265);
+  --sidebar-accent-foreground: oklch(0.97 0.004 264);
+  --sidebar-border: oklch(0.27 0.02 265);
+  --sidebar-ring: oklch(0.68 0.2 293);
+
+  --shadow-elevated: 0 1px 2px oklch(0 0 0 / 0.3), 0 12px 32px -12px oklch(0 0 0 / 0.5);
+}
+
+/* Script-aware type stacks. Latin always resolves to Geist first so mixed-language content renders well. */
+:root {
+  --font-stack-sans: var(--font-geist), var(--font-noto-arabic), var(--font-noto-sc), ui-sans-serif, system-ui, sans-serif;
+  --font-stack-display: var(--font-poppins), var(--font-noto-arabic), var(--font-noto-sc), ui-sans-serif, system-ui, sans-serif;
+}
+html[lang='ur'] {
+  --font-stack-sans: var(--font-geist), var(--font-noto-naskh), var(--font-noto-sc), ui-sans-serif, system-ui, sans-serif;
+  --font-stack-display: var(--font-poppins), var(--font-noto-nastaliq), var(--font-noto-naskh), ui-sans-serif, sans-serif;
+}
+html[lang='zh'] {
+  --font-stack-sans: var(--font-geist), var(--font-noto-sc), var(--font-noto-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-stack-display: var(--font-poppins), var(--font-noto-sc), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  html[dir='rtl'] body {
+    line-height: 1.7;
+  }
+  html[lang='ur'] :is(h1, h2, h3) {
+    line-height: 1.9;
+    letter-spacing: 0;
+  }
+  html[lang='zh'] body {
+    letter-spacing: 0.01em;
+  }
+  html[dir='rtl'] :is(h1, h2, h3, .font-display) {
+    letter-spacing: 0;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  /* Scale the whole interface on TVs and very large displays */
+  @media (min-width: 2200px) {
+    html {
+      font-size: 112.5%;
+    }
+  }
+  @media (min-width: 3000px) {
+    html {
+      font-size: 131.25%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility brand-rainbow {
+  background-image: linear-gradient(
+    90deg,
+    #06b6d4,
+    #7c3aed 16%,
+    #db2777 33%,
+    #f43f5e 50%,
+    #f97316 66%,
+    #fbbf24 83%,
+    #10b981
+  );
+}
+
+@utility brand-rainbow-v {
+  background-image: linear-gradient(180deg, #06b6d4, #7c3aed, #db2777, #f43f5e, #f97316, #fbbf24, #10b981);
+}
+
+@utility shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+@utility text-balance-safe {
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
