@@ -40,7 +40,6 @@ const zh: Dictionary = {
     skipToContent: '跳到主要内容',
     openMenu: '打开菜单',
     mainNav: '主导航',
-    illustrative: '示例说明',
   },
   landing: {
     nav: {
@@ -63,6 +62,20 @@ const zh: Dictionary = {
       laptopAlt: '一位白人业务负责人和一位黑人同事正在办公室用笔记本电脑查看 Provenic',
       mobileAlt: '一位东亚裔店主和一位黑人客户正在手机上查看共享记录',
       businessAlt: '一位南亚裔创办人和一位年长的白人同事正在办公室用平板与笔记本电脑查看工作',
+      ownerAlt: '一位年长的白人商家所有者和一位南亚裔同事正在桌边查看共享记录',
+      slideTeamEyebrow: '同处一个工作区',
+      slideTeamTitle: '团队成员查看同一项承诺',
+      slideTeamBody: '条款和更新都保留在记录中，让每次交接都有相同上下文。',
+      slideMobileEyebrow: '适合真实工作日',
+      slideMobileTitle: '随时随地查看记录',
+      slideMobileBody: '客户和服务团队可在手机上查看相同状态。',
+      slideOfficeEyebrow: '跨商家共享',
+      slideOfficeTitle: '让每次交接都更清晰',
+      slideOfficeBody: '将日期、责任和更新保存在同一份可信历史中。',
+      slideOwnerEyebrow: '从请求到交接',
+      slideOwnerTitle: '让每项细节与工作同行',
+      slideOwnerBody: '在承诺履行期间，将日期、责任和更新保存在一起。',
+
     },
     preview: {
       recordType: '维修',
@@ -112,6 +125,7 @@ const zh: Dictionary = {
       item3Body: '在对应记录上提出问题，附上证据，留下清晰中立的历史。',
       item4Title: '数据随你带走',
       item4Body: '随时导出你的记录。',
+      recordPanelTitle: '按承诺类型查看记录',
     },
     businesses: {
       eyebrow: '面向商家',
@@ -196,6 +210,20 @@ const zh: Dictionary = {
     teamAlt: '一位白人团队负责人和一位南亚裔同事在共享办公室查看客户记录',
     customerAlt: '一位拉丁裔客户和一位年长的东亚裔服务人员在平板电脑上查看记录',
     mobileAlt: '一位黑人小企业主和一位白人客户在手机上查看记录',
+    officeAlt: '一位黑人运营经理和一位东亚裔客户正在平板电脑上共同查看记录',
+    slideTeamEyebrow: '你的工作区',
+    slideTeamTitle: '一份共享记录，承载双方承诺',
+    slideTeamBody: '查看与你账户关联的条款、文件和更新。',
+    slideCustomerEyebrow: '客户与商家协作',
+    slideCustomerTitle: '带着完整上下文继续沟通',
+    slideCustomerBody: '跟进之前，先查看记录及其历史。',
+    slideMobileEyebrow: '随时随地',
+    slideMobileTitle: '让承诺始终触手可及',
+    slideMobileBody: '用手机、平板或笔记本打开同一条安全记录。',
+    slideOfficeEyebrow: '客户与团队',
+    slideOfficeTitle: '随时查看每次更新',
+    slideOfficeBody: '继续沟通之前，先查看双方共享的记录。',
+
     errors: {
       invalidCredentials: '邮箱或密码错误。',
       emailNotConfirmed: '请先确认你的邮箱，链接已发送至收件箱。',

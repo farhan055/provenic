@@ -39,7 +39,6 @@ const en = {
     skipToContent: 'Skip to content',
     openMenu: 'Open menu',
     mainNav: 'Main navigation',
-    illustrative: 'Illustrative example',
   },
   landing: {
     nav: {
@@ -63,6 +62,20 @@ const en = {
       laptopAlt: 'A white business lead and Black colleague reviewing Provenic on a laptop in their office',
       mobileAlt: 'An East Asian business owner and Black customer checking a shared record on a phone',
       businessAlt: 'A South Asian founder and older white colleague reviewing work on a tablet and laptop',
+      ownerAlt: 'An older white business owner and South Asian colleague reviewing a shared record at a desk',
+      slideTeamEyebrow: 'Together in one workspace',
+      slideTeamTitle: 'The whole team sees the same commitment',
+      slideTeamBody: 'Keep terms and updates with the record, so each handoff has the same context.',
+      slideMobileEyebrow: 'Designed for real workdays',
+      slideMobileTitle: 'Pick up the record wherever you are',
+      slideMobileBody: 'Customers and service teams can review the same status on a phone.',
+      slideOfficeEyebrow: 'Shared across businesses',
+      slideOfficeTitle: 'A clearer handoff, from desk to desk',
+      slideOfficeBody: 'Keep dates, responsibilities and updates in one trusted history.',
+      slideOwnerEyebrow: 'From request to handoff',
+      slideOwnerTitle: 'Keep every detail with the work',
+      slideOwnerBody: 'Dates, responsibilities and updates stay together throughout the commitment.',
+
     },
     preview: {
       recordType: 'Repair',
@@ -112,6 +125,7 @@ const en = {
       item3Body: 'Open an issue on the exact record, with evidence and a clear, neutral history.',
       item4Title: 'Your data, portable',
       item4Body: 'Export your records whenever you need them.',
+      recordPanelTitle: 'Records by commitment type',
     },
     businesses: {
       eyebrow: 'For businesses',
@@ -196,6 +210,20 @@ const en = {
     teamAlt: 'A white team lead and South Asian colleague reviewing customer records in a coworking office',
     customerAlt: 'A Latina customer and older East Asian service professional reviewing a record on a tablet',
     mobileAlt: 'A Black small-business owner and white customer checking a record on a smartphone',
+    officeAlt: 'A Black operations manager and East Asian customer reviewing a record together on a tablet',
+    slideTeamEyebrow: 'Your workspace',
+    slideTeamTitle: 'One shared record. Two sides of the promise.',
+    slideTeamBody: 'Return to the terms, documents and updates connected to your account.',
+    slideCustomerEyebrow: 'Customer and business, together',
+    slideCustomerTitle: 'Pick up the conversation with context',
+    slideCustomerBody: 'See the record and its history before you follow up.',
+    slideMobileEyebrow: 'On the move',
+    slideMobileTitle: 'Keep your commitments close',
+    slideMobileBody: 'Open the same secure record from a phone, tablet or laptop.',
+    slideOfficeEyebrow: 'Customer and team',
+    slideOfficeTitle: 'Keep every update in view',
+    slideOfficeBody: 'See the shared record before you continue the conversation.',
+
     errors: {
       invalidCredentials: 'Invalid email or password.',
       emailNotConfirmed: 'Please confirm your email first. Check your inbox for the link.',

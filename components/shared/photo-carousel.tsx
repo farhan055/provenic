@@ -5,7 +5,7 @@ import { Pause, Play } from 'lucide-react'
 import { useEffect, useState, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
-type Slide = { src: string; alt: string }
+type Slide = { src: string; alt: string; eyebrow?: string; title: string; description: string }
 type CarouselLabels = {
   description: string
   pause: string
@@ -19,6 +19,7 @@ export function PhotoCarousel({
   className,
   overlayClassName,
   showPauseControl = true,
+  captionVariant = 'card',
   children,
   priority = false,
 }: {
@@ -27,12 +28,14 @@ export function PhotoCarousel({
   className?: string
   overlayClassName?: string
   showPauseControl?: boolean
+  captionVariant?: 'card' | 'overlay'
   children?: ReactNode
   priority?: boolean
 }) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
   const [motionAllowed, setMotionAllowed] = useState(false)
+  const activeSlide = slides[activeIndex]
 
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -79,6 +82,19 @@ export function PhotoCarousel({
       </div>
       <div aria-hidden className={cn('absolute inset-0 bg-gradient-to-t from-brand-night/75 via-brand-night/10 to-brand-night/5', overlayClassName)} />
       <div className="relative z-10 h-full">{children}</div>
+      {activeSlide?.title && (
+        <div
+          aria-live="off"
+          className={cn(
+            'absolute inset-x-4 bottom-16 z-10 max-w-[22rem] rounded-2xl border border-white/60 bg-background/95 p-4 shadow-xl backdrop-blur-md sm:p-5',
+            captionVariant === 'overlay' && 'inset-x-5 bottom-16 max-w-[34rem] border-0 bg-transparent p-0 text-white shadow-none backdrop-blur-none sm:inset-x-8 lg:inset-x-12 lg:bottom-20',
+          )}
+        >
+          {activeSlide.eyebrow && <p className={cn('text-[10px] font-semibold tracking-wide uppercase', captionVariant === 'card' ? 'text-brand-violet' : 'text-white/80')}>{activeSlide.eyebrow}</p>}
+          <h3 className={cn('mt-1 font-display font-semibold', captionVariant === 'card' ? 'text-sm sm:text-base' : 'text-xl leading-tight sm:text-2xl lg:text-3xl')}>{activeSlide.title}</h3>
+          <p className={cn('mt-1.5 text-xs leading-5 sm:text-sm', captionVariant === 'card' ? 'text-muted-foreground' : 'text-white/90')}>{activeSlide.description}</p>
+        </div>
+      )}
       {slides.length > 1 && (
         <div className="absolute inset-x-4 bottom-4 z-20 flex items-center justify-between gap-3">
           <div className="flex items-center gap-1.5" role="group" aria-label={labels.description}>
