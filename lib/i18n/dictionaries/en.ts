@@ -193,6 +193,7 @@ const en = {
     signUpSubtitle: 'One account for your personal records and any business workspaces.',
     signUpSuccessTitle: 'Check your inbox',
     signUpSuccessBody: 'We sent a confirmation link to your email. Open it to verify your address; after confirmation, you will be taken straight to your Provenic workspace.',
+    confirmationEmailLabel: 'Confirmation sent to',
     confirmationStepTitle: 'Next step',
     confirmationStepBody: 'Open the confirmation email from Provenic and use its verification link. It returns you to your account.',
     confirmationWaitBody: 'Your account stays pending until that email link is confirmed. Sign-in is available after verification.',

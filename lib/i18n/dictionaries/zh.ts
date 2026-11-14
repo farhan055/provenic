@@ -193,6 +193,7 @@ const zh: Dictionary = {
     signUpSubtitle: '一个账户即可管理个人记录和任意商家工作区。',
     signUpSuccessTitle: '请查收邮件',
     signUpSuccessBody: '我们已向你的邮箱发送确认链接。请打开链接验证邮箱；验证后会直接进入 Provenic 工作区。',
+    confirmationEmailLabel: '确认邮件已发送至',
     confirmationStepTitle: '下一步',
     confirmationStepBody: '打开 Provenic 确认邮件并使用其中的验证链接，随后即可返回账户。',
     confirmationWaitBody: '邮箱链接确认前，账户会保持待验证状态；验证完成后即可登录。',

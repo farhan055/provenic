@@ -193,6 +193,7 @@ const ar: Dictionary = {
     signUpSubtitle: 'حساب واحد لسجلاتك الشخصية وأي مساحات عمل لشركات.',
     signUpSuccessTitle: 'تحقق من بريدك',
     signUpSuccessBody: 'أرسلنا رابط تأكيد إلى بريدك الإلكتروني. افتحه للتحقق من عنوانك؛ وبعد التأكيد ستنتقل مباشرة إلى مساحة عملك في Provenic.',
+    confirmationEmailLabel: 'أُرسل رابط التأكيد إلى',
     confirmationStepTitle: 'الخطوة التالية',
     confirmationStepBody: 'افتح رسالة التأكيد من Provenic واستخدم رابط التحقق فيها. سيعيدك الرابط إلى حسابك.',
     confirmationWaitBody: 'سيبقى حسابك قيد الانتظار حتى تأكيد رابط البريد الإلكتروني. سيتاح تسجيل الدخول بعد التحقق.',
