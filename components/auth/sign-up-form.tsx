@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -12,13 +11,14 @@ import { createClient } from '@/lib/supabase/client'
 import type { TranslationKey } from '@/lib/i18n/translate'
 import { CURRENT_PRIVACY_VERSION, CURRENT_TERMS_VERSION } from '@/lib/legal'
 import { AuthAlert, AuthHeading } from './auth-card'
+import { SignUpConfirmation } from './sign-up-confirmation'
 import { EMAIL_RE, authErrorKey, redirectBase, safeNext } from './auth-utils'
 
 type Errors = Partial<Record<'name' | 'email' | 'password' | 'confirm' | 'legal', TranslationKey>>
 
 export function SignUpForm({ next }: { next?: string }) {
   const { t, locale } = useI18n()
-  const router = useRouter()
+  const [confirmationEmail, setConfirmationEmail] = useState<string | null>(null)
   const [values, setValues] = useState({ name: '', email: '', password: '', confirm: '' })
   const [acceptedLegal, setAcceptedLegal] = useState(false)
   const [errors, setErrors] = useState<Errors>({})
@@ -40,7 +40,7 @@ export function SignUpForm({ next }: { next?: string }) {
     setLoading(true)
     setFormError(null)
     const callback = new URL(redirectBase())
-    callback.searchParams.set('next', safeNext(next))
+    callback.searchParams.set('next', safeNext(next, '/auth/login'))
     const { error } = await createClient().auth.signUp({
       email: values.email.trim(),
       password: values.password,
@@ -59,8 +59,11 @@ export function SignUpForm({ next }: { next?: string }) {
       setLoading(false)
       return
     }
-    router.push('/auth/sign-up-success')
+    setLoading(false)
+    setConfirmationEmail(values.email.trim())
   }
+
+  if (confirmationEmail) return <SignUpConfirmation email={confirmationEmail} />
 
   return (
     <>

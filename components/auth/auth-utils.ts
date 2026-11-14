@@ -12,12 +12,14 @@ export function authErrorKey(error: AuthError): TranslationKey {
   return 'auth.errors.unexpected'
 }
 
-export function safeNext(next: string | null | undefined) {
-  return next && next.startsWith('/') && !next.startsWith('//') ? next : '/app'
+export function safeNext(next: string | null | undefined, fallback = '/app') {
+  return next && next.startsWith('/') && !next.startsWith('//') ? next : fallback
 }
 
 export function redirectBase() {
-  return process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL ?? `${window.location.origin}/auth/callback`
+  const developmentRedirect = process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL
+  if (process.env.NODE_ENV !== 'production' && developmentRedirect) return developmentRedirect
+  return `${window.location.origin}/auth/callback`
 }
 
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
