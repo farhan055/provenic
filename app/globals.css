@@ -248,6 +248,25 @@ html[lang='zh'] {
     mask-composite: exclude;
   }
 
+  .brand-rainbow-border {
+    position: relative;
+    isolation: isolate;
+    border-color: transparent;
+  }
+
+  .brand-rainbow-border::before {
+    position: absolute;
+    inset: -1px;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #06b6d4, #7c3aed 16%, #db2777 33%, #f43f5e 50%, #f97316 66%, #fbbf24 83%, #10b981);
+    content: '';
+    pointer-events: none;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
   .brand-hover {
     position: relative;
     isolation: isolate;

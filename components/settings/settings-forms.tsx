@@ -51,7 +51,7 @@ export function DataControls({ deletionPending }: { deletionPending: boolean }) 
   const [pending, start] = useTransition()
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      <div className="flex flex-col gap-3 rounded-xl border p-4">
+      <div className="brand-rainbow-border flex flex-col gap-3 rounded-xl border p-4">
         <h3 className="text-sm font-semibold">{t('settings.exportTitle')}</h3>
         <p className="text-sm text-pretty text-muted-foreground">{t('settings.exportBody')}</p>
         <Button render={<a href="/api/export" download />} nativeButton={false} variant="outline" className="mt-auto h-9 w-fit">

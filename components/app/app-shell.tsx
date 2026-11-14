@@ -192,7 +192,7 @@ function UserMenu({ profile }: { profile: ShellProps['profile'] }) {
           <button
             type="button"
             aria-label={t('nav.account')}
-            className="flex size-9 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground ring-2 ring-background transition-opacity hover:opacity-90"
+            className="brand-rainbow-border flex size-9 items-center justify-center rounded-full border-2 bg-white text-xs font-semibold text-brand-ink ring-2 ring-background transition-opacity hover:opacity-90"
           >
             <span dir="ltr">{initials(profile.name, profile.email)}</span>
           </button>

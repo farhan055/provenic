@@ -39,7 +39,7 @@ export function Panel({
   bodyClassName?: string
 }) {
   return (
-    <section className={cn('rounded-xl border bg-card text-card-foreground shadow-elevated', className)}>
+    <section className={cn('brand-rainbow-border rounded-xl border bg-card text-card-foreground shadow-elevated', className)}>
       {(title || actions) && (
         <div className="flex flex-wrap items-start justify-between gap-3 border-b px-4 py-3.5 md:px-5">
           <div className="flex min-w-0 flex-col gap-0.5">
@@ -103,7 +103,7 @@ export function StatCard({
     orange: 'text-brand-orange bg-brand-orange/10',
   }[accent]
   return (
-    <div className="flex flex-col gap-3 rounded-xl border bg-card p-4 shadow-elevated md:p-5">
+    <div className="brand-rainbow-border flex flex-col gap-3 rounded-xl border bg-card p-4 shadow-elevated md:p-5">
       <div className="flex items-center justify-between gap-2">
         <span className="text-xs font-medium text-muted-foreground md:text-sm">{label}</span>
         <span className={cn('flex size-8 items-center justify-center rounded-lg [&_svg]:size-4', accentClass)}>{icon}</span>
