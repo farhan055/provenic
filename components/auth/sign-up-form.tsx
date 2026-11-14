@@ -92,7 +92,7 @@ export function SignUpForm({ next }: { next?: string }) {
               aria-label={t('auth.acceptedLegalLabel')}
               aria-describedby={errors.legal ? 'legal-consent-error' : undefined}
               aria-invalid={errors.legal ? true : undefined}
-              className="mt-1 size-4 shrink-0 accent-brand-violet"
+              className="brand-checkbox mt-1 size-4 shrink-0"
             />
             <div className="flex flex-wrap items-baseline gap-x-1">
               <label id="legal-consent-label" htmlFor="legal-consent">{t('auth.acceptIntro')}</label>
