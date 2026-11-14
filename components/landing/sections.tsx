@@ -20,7 +20,7 @@ import {
   Check,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { RecordPreview } from './record-preview'
+import { PhotoCarousel } from '@/components/shared/photo-carousel'
 import type { Locale } from '@/lib/i18n/config'
 import type { Translator } from '@/lib/i18n/translate'
 import { cn } from '@/lib/utils'
@@ -76,7 +76,38 @@ export function Hero({ t, locale, signedIn }: P & { locale: Locale; signedIn: bo
             {t('landing.hero.note')}
           </p>
         </div>
-        <RecordPreview t={t} locale={locale} />
+        <PhotoCarousel
+          priority
+          className="aspect-[1.05/1] min-h-[360px] sm:min-h-[430px] lg:min-h-[480px]"
+          showPauseControl={false}
+          labels={{
+            description: t('landing.hero.carouselDescription'),
+            pause: t('landing.hero.pauseCarousel'),
+            resume: t('landing.hero.resumeCarousel'),
+            slide: t('landing.hero.carouselSlide'),
+          }}
+          slides={[
+            { src: '/brand/landing-team.png', alt: t('landing.hero.laptopAlt') },
+            { src: '/brand/landing-mobile.png', alt: t('landing.hero.mobileAlt') },
+            { src: '/brand/landing-office.png', alt: t('landing.hero.businessAlt') },
+          ]}
+        >
+          <div className="flex h-full items-end p-4 sm:p-6">
+            <div className="max-w-[22rem] rounded-2xl border border-white/50 bg-background/95 p-4 shadow-xl backdrop-blur-md sm:p-5">
+              <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+                <ShieldCheck className="size-4 text-brand-emerald" aria-hidden />
+                {t('landing.preview.verified')}
+              </div>
+              <p className="mt-2 font-display text-sm font-semibold sm:text-base">{t('landing.preview.title')}</p>
+              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                <span>{t('landing.preview.business')}</span>
+                <span aria-hidden className="size-1 rounded-full bg-brand-cyan" />
+                <span>{t('landing.preview.status')}</span>
+              </div>
+              <p className="mt-2 text-[11px] text-muted-foreground">{t('common.illustrative')}</p>
+            </div>
+          </div>
+        </PhotoCarousel>
       </div>
     </section>
   )

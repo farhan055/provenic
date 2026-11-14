@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Menu } from 'lucide-react'
-import { Logo } from '@/components/brand/logo'
+import { BrandLockup } from '@/components/brand/brand-lockup'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { LanguageSwitcher } from '@/components/shared/language-switcher'
@@ -14,10 +14,10 @@ export function SiteHeader({ signedIn }: { signedIn: boolean }) {
   const { t, dir } = useI18n()
   const [open, setOpen] = useState(false)
   const links = [
-    { href: '#how', label: t('landing.nav.how') },
-    { href: '#customers', label: t('landing.nav.customers') },
-    { href: '#businesses', label: t('landing.nav.businesses') },
-    { href: '#trust', label: t('landing.nav.trust') },
+    { href: '/#how', label: t('landing.nav.how') },
+    { href: '/#customers', label: t('landing.nav.customers') },
+    { href: '/#businesses', label: t('landing.nav.businesses') },
+    { href: '/#trust', label: t('landing.nav.trust') },
   ]
 
   return (
@@ -25,7 +25,7 @@ export function SiteHeader({ signedIn }: { signedIn: boolean }) {
       <div aria-hidden className="brand-rainbow h-0.5 w-full" />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:px-6 2xl:max-w-[1440px]">
         <Link href="/" className="flex items-center rounded-md" aria-label="Provenic">
-          <Logo variant="wordmark" className="h-7 md:h-8" />
+          <BrandLockup size="header" />
         </Link>
 
         <nav aria-label={t('common.mainNav')} className="hidden items-center gap-1 lg:flex">
@@ -33,7 +33,7 @@ export function SiteHeader({ signedIn }: { signedIn: boolean }) {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="brand-link rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               {l.label}
             </a>
