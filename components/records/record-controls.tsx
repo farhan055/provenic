@@ -58,7 +58,7 @@ function InternalToggle({ name = 'internal' }: { name?: string }) {
   const { t } = useI18n()
   return (
     <label className="flex cursor-pointer items-center gap-2 text-xs text-muted-foreground select-none">
-      <input type="checkbox" name={name} className="size-4 rounded border-input accent-brand-violet" />
+      <input type="checkbox" name={name} className="brand-checkbox size-4 shrink-0" />
       {t('record.commentInternal')}
     </label>
   )

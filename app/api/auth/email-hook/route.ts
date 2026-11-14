@@ -213,5 +213,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'email_delivery_failed' }, { status: 503, headers: { 'retry-after': 'true' } })
   }
 
-  return new Response(null, { status: 200 })
+  return NextResponse.json({}, { status: 200, headers: { 'cache-control': 'no-store' } })
 }

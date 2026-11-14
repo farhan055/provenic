@@ -58,7 +58,7 @@ export function LoginForm({ next }: { next?: string }) {
           )}
         </Field>
         <div className="-mt-1 flex justify-end">
-          <Link href="/auth/forgot-password" className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">
+          <Link href="/auth/forgot-password" className="brand-link text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">
             {t('auth.forgot')}
           </Link>
         </div>
