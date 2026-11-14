@@ -13,7 +13,26 @@ export function authErrorKey(error: AuthError): TranslationKey {
 }
 
 export function safeNext(next: string | null | undefined, fallback = '/app') {
-  return next && next.startsWith('/') && !next.startsWith('//') ? next : fallback
+  if (!next || !next.startsWith('/') || next.startsWith('//') || next.includes('\\') || /[\u0000-\u001f]/.test(next)) {
+    return fallback
+  }
+
+  try {
+    const base = new URL('https://provenic.invalid')
+    const target = new URL(next, base)
+    const decodedPath = decodeURIComponent(target.pathname)
+    if (
+      target.origin !== base.origin ||
+      target.pathname.startsWith('//') ||
+      decodedPath.startsWith('//') ||
+      decodedPath.includes('\\')
+    ) {
+      return fallback
+    }
+    return `${target.pathname}${target.search}${target.hash}`
+  } catch {
+    return fallback
+  }
 }
 
 export function redirectBase() {

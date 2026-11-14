@@ -27,6 +27,7 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
 
       <aside className="relative order-1 flex h-[220px] overflow-hidden text-white lg:order-1 lg:h-auto lg:min-h-dvh">
         <PhotoCarousel
+          priority
           className="absolute inset-0 rounded-none border-0"
           overlayClassName="from-brand-night/95 via-brand-night/60 to-brand-night/40"
           showPauseControl={false}

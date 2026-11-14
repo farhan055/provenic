@@ -25,13 +25,19 @@ export function ForgotPasswordForm() {
     if (!EMAIL_RE.test(email.trim())) return setError('auth.errors.emailInvalid')
     setLoading(true)
     setError(null)
-    const callback = new URL(redirectBase())
-    callback.searchParams.set('next', '/auth/update-password')
-    const { error } = await createClient().auth.resetPasswordForEmail(email.trim(), { redirectTo: callback.toString() })
-    setLoading(false)
-    // Rate limits are actionable; every other outcome shows the same message to avoid enumeration.
-    if (error && (error.status === 429 || error.code?.startsWith('over_'))) return setError('auth.errors.rateLimited')
-    setSent(true)
+    try {
+      const callback = new URL(redirectBase())
+      callback.searchParams.set('next', '/auth/update-password')
+      const { error } = await createClient().auth.resetPasswordForEmail(email.trim(), { redirectTo: callback.toString() })
+      // Rate limits are actionable; every other outcome shows the same message to avoid enumeration.
+      if (error && (error.status === 429 || error.code?.startsWith('over_'))) return setError('auth.errors.rateLimited')
+      if (error) return setError('auth.errors.unexpected')
+      setSent(true)
+    } catch {
+      setError('auth.errors.unexpected')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -67,14 +73,19 @@ export function UpdatePasswordForm() {
     if (password.length < 8) return setError('auth.errors.passwordShort')
     setLoading(true)
     setError(null)
-    const { error } = await createClient().auth.updateUser({ password })
-    if (error) {
-      setError(authErrorKey(error))
+    try {
+      const { error } = await createClient().auth.updateUser({ password })
+      if (error) {
+        setError(authErrorKey(error))
+        return
+      }
+      router.replace('/app')
+      router.refresh()
+    } catch {
+      setError('auth.errors.unexpected')
+    } finally {
       setLoading(false)
-      return
     }
-    router.replace('/app')
-    router.refresh()
   }
 
   return (

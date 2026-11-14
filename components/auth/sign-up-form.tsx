@@ -39,28 +39,32 @@ export function SignUpForm({ next }: { next?: string }) {
 
     setLoading(true)
     setFormError(null)
-    const callback = new URL(redirectBase())
-    callback.searchParams.set('next', safeNext(next, '/auth/login'))
-    const { error } = await createClient().auth.signUp({
-      email: values.email.trim(),
-      password: values.password,
-      options: {
-        emailRedirectTo: callback.toString(),
-        data: {
-          full_name: values.name.trim(),
-          locale,
-          terms_version: CURRENT_TERMS_VERSION,
-          privacy_version: CURRENT_PRIVACY_VERSION,
+    try {
+      const callback = new URL(redirectBase())
+      callback.searchParams.set('next', safeNext(next, '/auth/login'))
+      const { error } = await createClient().auth.signUp({
+        email: values.email.trim(),
+        password: values.password,
+        options: {
+          emailRedirectTo: callback.toString(),
+          data: {
+            full_name: values.name.trim(),
+            locale,
+            terms_version: CURRENT_TERMS_VERSION,
+            privacy_version: CURRENT_PRIVACY_VERSION,
+          },
         },
-      },
-    })
-    if (error) {
-      setFormError(authErrorKey(error))
+      })
+      if (error) {
+        setFormError(authErrorKey(error))
+        return
+      }
+      setConfirmationEmail(values.email.trim())
+    } catch {
+      setFormError('auth.errors.unexpected')
+    } finally {
       setLoading(false)
-      return
     }
-    setLoading(false)
-    setConfirmationEmail(values.email.trim())
   }
 
   if (confirmationEmail) return <SignUpConfirmation email={confirmationEmail} />

@@ -32,14 +32,19 @@ export function LoginForm({ next }: { next?: string }) {
 
     setLoading(true)
     setFormError(null)
-    const { error } = await createClient().auth.signInWithPassword({ email: email.trim(), password })
-    if (error) {
-      setFormError(authErrorKey(error))
+    try {
+      const { error } = await createClient().auth.signInWithPassword({ email: email.trim(), password })
+      if (error) {
+        setFormError(authErrorKey(error))
+        return
+      }
+      router.replace(safeNext(next))
+      router.refresh()
+    } catch {
+      setFormError('auth.errors.unexpected')
+    } finally {
       setLoading(false)
-      return
     }
-    router.replace(safeNext(next))
-    router.refresh()
   }
 
   return (
