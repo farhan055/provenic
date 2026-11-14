@@ -16,7 +16,12 @@ const assets = {
 
 export function Logo({ variant = 'wordmark', className, onDark = false }: LogoProps) {
   const a = assets[variant]
-  const common = { width: a.w, height: a.h, alt: 'Provenic', decoding: 'async' as const }
+  const common = {
+    width: a.w,
+    height: a.h,
+    alt: variant === 'full' ? 'Provenic — Every promise, proven.' : 'Provenic',
+    decoding: 'async' as const,
+  }
 
   if (onDark) {
     // eslint-disable-next-line @next/next/no-img-element

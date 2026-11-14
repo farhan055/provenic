@@ -20,7 +20,7 @@ import {
   Users,
   UsersRound,
 } from 'lucide-react'
-import { Logo } from '@/components/brand/logo'
+import { BrandLockup } from '@/components/brand/brand-lockup'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -225,7 +225,7 @@ function SidebarBody({ workspaces, onNavigate }: { workspaces: ShellWorkspace[];
   return (
     <div className="flex h-full flex-col gap-5 p-4">
       <Link href="/app" onClick={onNavigate} className="flex items-center px-1 pt-1" aria-label="Provenic">
-        <Logo variant="wordmark" className="h-7" />
+            <BrandLockup size="mobile" />
       </Link>
       <WorkspaceSwitcher workspaces={workspaces} onNavigate={onNavigate} />
       <NavLinks workspaces={workspaces} onNavigate={onNavigate} />
@@ -263,7 +263,7 @@ export function AppShell({ profile, workspaces, children }: ShellProps) {
             </SheetContent>
           </Sheet>
           <Link href="/app" className="lg:hidden" aria-label="Provenic">
-            <Logo variant="mark" className="h-8" />
+        <BrandLockup size="sidebar" />
           </Link>
 
           <div className="ms-auto flex items-center gap-1">

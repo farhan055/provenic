@@ -4,6 +4,7 @@ import {
   Bell,
   Building2,
   CalendarCheck,
+  CalendarDays,
   FileLock2,
   FolderOpen,
   Globe2,
@@ -16,11 +17,13 @@ import {
   ShieldCheck,
   Sparkles,
   Users,
+  Truck,
+  Wrench,
   Download,
   Check,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { RecordPreview } from './record-preview'
+import { PhotoCarousel } from '@/components/shared/photo-carousel'
 import type { Locale } from '@/lib/i18n/config'
 import type { Translator } from '@/lib/i18n/translate'
 import { cn } from '@/lib/utils'
@@ -76,7 +79,48 @@ export function Hero({ t, locale, signedIn }: P & { locale: Locale; signedIn: bo
             {t('landing.hero.note')}
           </p>
         </div>
-        <RecordPreview t={t} locale={locale} />
+        <PhotoCarousel
+          priority
+          className="aspect-[1.05/1] min-h-[360px] sm:min-h-[430px] lg:min-h-[480px]"
+          showPauseControl={false}
+          captionVariant="card"
+          labels={{
+            description: t('landing.hero.carouselDescription'),
+            pause: t('landing.hero.pauseCarousel'),
+            resume: t('landing.hero.resumeCarousel'),
+            slide: t('landing.hero.carouselSlide'),
+          }}
+          slides={[
+            {
+              src: '/brand/landing-team.png',
+              alt: t('landing.hero.laptopAlt'),
+              eyebrow: t('landing.hero.slideTeamEyebrow'),
+              title: t('landing.hero.slideTeamTitle'),
+              description: t('landing.hero.slideTeamBody'),
+            },
+            {
+              src: '/brand/landing-mobile.png',
+              alt: t('landing.hero.mobileAlt'),
+              eyebrow: t('landing.hero.slideMobileEyebrow'),
+              title: t('landing.hero.slideMobileTitle'),
+              description: t('landing.hero.slideMobileBody'),
+            },
+            {
+              src: '/brand/landing-office.png',
+              alt: t('landing.hero.businessAlt'),
+              eyebrow: t('landing.hero.slideOfficeEyebrow'),
+              title: t('landing.hero.slideOfficeTitle'),
+              description: t('landing.hero.slideOfficeBody'),
+            },
+            {
+              src: '/brand/landing-owner.png',
+              alt: t('landing.hero.ownerAlt'),
+              eyebrow: t('landing.hero.slideOwnerEyebrow'),
+              title: t('landing.hero.slideOwnerTitle'),
+              description: t('landing.hero.slideOwnerBody'),
+            },
+          ]}
+        />
       </div>
     </section>
   )
@@ -120,7 +164,7 @@ export function HowItWorks({ t }: P) {
         <SectionHeading eyebrow={t('landing.how.eyebrow')} title={t('landing.how.title')} />
         <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <li key={s.title} className="group relative flex flex-col gap-4 rounded-2xl border bg-card p-5 shadow-elevated transition-transform duration-300 hover:-translate-y-0.5">
+            <li key={s.title} className="brand-hover group relative flex flex-col gap-4 rounded-2xl border bg-card p-5 shadow-elevated transition-transform duration-300 hover:-translate-y-0.5">
               <div className="flex items-center justify-between">
                 <span className={cn('flex size-10 items-center justify-center rounded-xl', s.color)}>
                   <s.icon className="size-5" aria-hidden />
@@ -179,62 +223,66 @@ function AudienceSection({
 
 function CustomerVisual({ t }: P) {
   const rows = [
-    { biz: t('landing.preview.business'), type: t('recordType.repair'), status: t('status.active'), dot: 'bg-brand-cyan' },
-    { biz: 'Harbor Furniture Co.', type: t('recordType.delivery'), status: t('status.pending'), dot: 'bg-brand-amber' },
-    { biz: 'Lumen Dental Studio', type: t('recordType.booking'), status: t('status.completed'), dot: 'bg-brand-emerald' },
-    { biz: 'Atlas Appliances', type: t('recordType.warranty'), status: t('status.active'), dot: 'bg-brand-cyan' },
+    { type: t('recordType.repair'), status: t('status.active'), icon: Wrench, color: 'text-brand-cyan bg-brand-cyan/10', dot: 'bg-brand-cyan' },
+    { type: t('recordType.delivery'), status: t('status.pending'), icon: Truck, color: 'text-brand-amber bg-brand-amber/10', dot: 'bg-brand-amber' },
+    { type: t('recordType.booking'), status: t('status.completed'), icon: CalendarDays, color: 'text-brand-emerald bg-brand-emerald/10', dot: 'bg-brand-emerald' },
+    { type: t('recordType.warranty'), status: t('status.active'), icon: ShieldCheck, color: 'text-brand-violet bg-brand-violet/10', dot: 'bg-brand-violet' },
   ]
   return (
-    <figure className="rounded-2xl border bg-card p-2 shadow-elevated" aria-label={t('common.illustrative')}>
-      <ul className="divide-y">
-        {rows.map((r) => (
-          <li key={r.biz} className="flex items-center justify-between gap-3 px-3 py-3.5">
-            <div className="flex min-w-0 items-center gap-3">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-surface text-xs font-semibold">
-                {r.biz.slice(0, 1)}
-              </span>
-              <div className="flex min-w-0 flex-col">
-                <span className="truncate text-sm font-medium">{r.biz}</span>
-                <span className="text-xs text-muted-foreground">{r.type}</span>
+    <figure className="overflow-hidden rounded-2xl border bg-card shadow-elevated" aria-label={t('landing.customers.recordPanelTitle')}>
+      <div aria-hidden className="brand-rainbow h-1 w-full" />
+      <div className="p-2">
+        <h3 className="px-3 py-3 text-sm font-semibold">{t('landing.customers.recordPanelTitle')}</h3>
+        <ul className="divide-y">
+          {rows.map((row) => (
+            <li key={row.type} className="flex items-center justify-between gap-3 px-3 py-3.5">
+              <div className="flex min-w-0 items-center gap-3">
+                <span className={cn('flex size-9 shrink-0 items-center justify-center rounded-lg', row.color)}>
+                  <row.icon className="size-4" aria-hidden />
+                </span>
+                <span className="truncate text-sm font-medium">{row.type}</span>
               </div>
-            </div>
-            <span className="flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground">
-              <span aria-hidden className={cn('size-1.5 rounded-full', r.dot)} />
-              {r.status}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <figcaption className="px-3 pt-2 pb-1 text-xs text-muted-foreground">{t('common.illustrative')}</figcaption>
+              <span className="flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground">
+                <span aria-hidden className={cn('size-1.5 rounded-full', row.dot)} />
+                {row.status}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </figure>
   )
 }
 
 function BusinessVisual({ t }: P) {
-  const stats = [
-    { label: t('business.statActive'), value: '24', color: 'bg-brand-cyan' },
-    { label: t('business.statPending'), value: '7', color: 'bg-brand-amber' },
-    { label: t('business.statOverdue'), value: '2', color: 'bg-brand-rose' },
-    { label: t('business.statCompleted'), value: '138', color: 'bg-brand-emerald' },
+  const statuses = [
+    { label: t('business.statActive'), icon: History, color: 'text-brand-cyan bg-brand-cyan/10' },
+    { label: t('business.statPending'), icon: CalendarCheck, color: 'text-brand-amber bg-brand-amber/10' },
+    { label: t('business.statOverdue'), icon: Bell, color: 'text-brand-rose bg-brand-rose/10' },
+    { label: t('business.statCompleted'), icon: Check, color: 'text-brand-emerald bg-brand-emerald/10' },
   ]
   return (
-    <figure className="flex flex-col gap-3" aria-label={t('common.illustrative')}>
-      <div className="grid grid-cols-2 gap-3">
-        {stats.map((s) => (
-          <div key={s.label} className="flex flex-col gap-2 rounded-xl border bg-card p-4 shadow-elevated">
-            <span className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span aria-hidden className={cn('size-1.5 rounded-full', s.color)} />
-              {s.label}
-            </span>
-            <span className="font-display text-2xl font-semibold tabular-nums">{s.value}</span>
-          </div>
-        ))}
+    <figure className="flex flex-col gap-3" aria-label={t('business.overviewSubtitle')}>
+      <div className="overflow-hidden rounded-2xl border bg-card shadow-elevated">
+        <div aria-hidden className="brand-rainbow h-1 w-full" />
+        <div className="p-4">
+          <h3 className="text-sm font-semibold">{t('business.recentActivity')}</h3>
+          <ul className="mt-3 grid grid-cols-2 gap-3">
+            {statuses.map((status) => (
+              <li key={status.label} className="brand-hover flex min-h-16 items-center gap-2 rounded-xl border bg-background p-3 text-sm font-medium">
+                <span className={cn('flex size-8 shrink-0 items-center justify-center rounded-lg', status.color)}>
+                  <status.icon className="size-4" aria-hidden />
+                </span>
+                {status.label}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="flex items-center gap-3 rounded-xl border bg-card p-4 text-sm shadow-elevated">
+      <div className="brand-hover flex items-center gap-3 rounded-xl border bg-card p-4 text-sm shadow-elevated">
         <Lock className="size-4 shrink-0 text-brand-violet" aria-hidden />
         <span className="text-muted-foreground">{t('record.internalHint')}</span>
       </div>
-      <figcaption className="text-xs text-muted-foreground">{t('common.illustrative')}</figcaption>
     </figure>
   )
 }

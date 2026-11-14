@@ -13,7 +13,7 @@ export function AuthAlert({ tone, children }: { tone: 'error' | 'success'; child
       role={tone === 'error' ? 'alert' : 'status'}
       className={
         tone === 'error'
-          ? 'rounded-lg border border-destructive/30 bg-destructive/5 px-3 py-2.5 text-sm text-destructive'
+          ? 'brand-error-alert rounded-lg border border-transparent bg-destructive/5 px-3 py-2.5 text-sm text-destructive'
           : 'rounded-lg border border-brand-emerald/30 bg-brand-emerald/10 px-3 py-2.5 text-sm text-emerald-800 dark:text-emerald-300'
       }
     >
